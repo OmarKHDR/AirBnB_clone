@@ -1,0 +1,5 @@
+chmod u+x "$1"
+git add .
+read input
+git commit -m "$input"
+git push
