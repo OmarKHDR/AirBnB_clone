@@ -1,9 +1,0 @@
-chmod u+x "$1"
-git add .
-echo -n "enter message:"
-read input 
-if [ "$input" == "" ]; then
-    exit 1
-fi
-git commit -m "$input"
-git push
