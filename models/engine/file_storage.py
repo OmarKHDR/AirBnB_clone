@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+""" should work just as a DB"""
+import json
+
+
+class FileStorage:
+    __file_path = 'file.json'
+    __objects = {}
+
+    def __init__(self) -> None:
+        pass
+
+    def all(self):
+        return self.__objects
+    
+    def new(self, obj):
+        self.__objects[type(obj).__name__+ '.' + obj.id] = obj
+    
+    def save(self):
+        jsonstr = json.dumps(self.__objects)
+        with open(self.__file_path, 'w') as f:
+            f.write(jsonstr)
+    
+    def reload(self):
+        try:
+            with open(self.__file_path, 'r') as f:
+                jsonstring = f.read()
+                self.__objects = json.loads(jsonstring)
+
+        except IOError:
+            return
