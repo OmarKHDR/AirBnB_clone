@@ -22,7 +22,3 @@ class BaseModel:
         dic = self.__dict__.copy()
         dic['__class__'] = type(self).__name__
         return dic
-
-
-a = BaseModel()
-print(a.updated_at)
