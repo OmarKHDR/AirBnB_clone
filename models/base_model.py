@@ -17,7 +17,6 @@ class BaseModel:
                     continue
                 setattr(self, key, kwargs[key])
         else:
-            print("idiot")
             self.id = str(uuid.uuid4())
             self.created_at = (dt.now())
             self.updated_at = (dt.now())
