@@ -20,7 +20,7 @@ class BaseModel:
 
     def to_dict(self):
         dic = self.__dict__.copy()
-        dic['updated_at'] = dt.strftime(dt.isoformat(self.updated_at))
-        dic['created_at'] = dt.strftime(dt.isoformat(self.created_at))
+        dic['updated_at'] = dt.isoformat(self.updated_at)
+        dic['created_at'] = dt.isoformat(self.created_at)
         dic['__class__'] = type(self).__name__
         return dic
