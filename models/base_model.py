@@ -10,7 +10,7 @@ class BaseModel:
         if len(kwargs) > 0:
             for key in kwargs.keys():
                 if key == 'created_at' or key == 'updated_at':
-                    self.key = dt.strptime(kwargs[key])
+                    self.key = dt.strptime(kwargs[key], '%Y-%m-%dT%H:%M:%S.%f')
                     continue
                 self.key = kwargs[key]
             return
