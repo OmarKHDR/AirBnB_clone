@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import cmd
+""" maybe here """
 """ cmd.Cmd object which give the cmd properties
     HBNBCommand will be our interface while developing the BnB clone proj"""
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
