@@ -94,10 +94,10 @@ class HBNBCommand(cmd.Cmd):
             dic = storage.all()
             del dic[arg[0] + '.' + arg[1]]
             storage.save()
-        except (KeyError, IOError):
-            print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
+        except (KeyError, IOError, IndexError):
+            print("** no instance found **")
         return
     
     def do_all(self, args):
@@ -139,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
             except NameError:
                 print("** class doesn't exist **")
-            except KeyError:
+            except (KeyError, IOError):
                 print("** no instance found **")
 
 if __name__ == '__main__':
