@@ -83,13 +83,13 @@ class HBNBCommand(cmd.Cmd):
         arg = args.split(" ")
         length = len(arg)
         try:
-            HBNBCommand.ClassExist(arg[0])
             if length == 0:
                 print("** class name missing **")
                 return
             elif length == 1:
                 print("** instance id missing **")
                 return
+            HBNBCommand.ClassExist(arg[0])
 
             storage.reload()
             dic = storage.all()
