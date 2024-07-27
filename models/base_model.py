@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """base class with basic functionality"""
 import uuid
-import sys
 from datetime import datetime as dt
-sys.path.append('.')
 from models import storage
 
 
@@ -14,6 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         if len(kwargs) > 0:
+            #print("restoring old instance from files....")
             for key in kwargs.keys():
                 if key == 'created_at' or key == 'updated_at':
                     setattr(self, key, dt.strptime(kwargs[key], timeformat))
