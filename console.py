@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 import cmd
-
+""" cmd.Cmd object which give the cmd properties 
+    HBNBCommand will be our interface while developing the BnB clone proj"""
 
 class HBNBCommand(cmd.Cmd):
-    #================
+    """ ######### cmd prompet #########"""
 
     def emptyline(self) -> bool:
+        """ when entering empty line """
         return 
 
     def do_quit(self, arg):
