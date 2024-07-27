@@ -71,10 +71,10 @@ class HBNBCommand(cmd.Cmd):
             obj_dict = dic[arg[0]+'.'+arg[1]]
             obj = eval(arg[0])(**obj_dict)
             print(obj)
-        except (KeyError, IOError):
-            print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
+        except (KeyError, IOError, IndexError):
+            print("** no instance found **")
         return
 
     def do_destroy(self, args):
