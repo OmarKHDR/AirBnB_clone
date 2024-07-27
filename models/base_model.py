@@ -37,7 +37,3 @@ class BaseModel:
         dic['created_at'] = dt.isoformat(self.created_at)
         dic['__class__'] = type(self).__name__
         return dic
-
-c = BaseModel()
-c.save()
-print(c)
