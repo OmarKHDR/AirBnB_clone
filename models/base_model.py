@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """base class with basic functionality"""
 import uuid
-from __init__ import storage
+import sys
 from datetime import datetime as dt
+sys.path.append('.')
+from models import storage
+
+
 timeformat = '%Y-%m-%dT%H:%M:%S.%f'
 
 
