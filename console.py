@@ -116,31 +116,31 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self,args):
         """adding attr to existing object: $update ClassName ID attr_name 'attr value'"""
         arg = args.split(" ")
-        match len(arg):
-            case 0:
-                print("** class name missing **")
-            case 1:
-                print("** instance id missing **")
-            case 2:
-                print("** attribute name missing **")
-            case 3:
-                print("** value missing **")
-            case 4:
+        length = len(arg)
+        if length == 0:
+            print("** class name missing **")
+        elif length == 1:
+            print("** instance id missing **")
+        elif length == 2:
+            print("** attribute name missing **")
+        elif length == 3:
+            print("** value missing **")
+        else:
+            try:
+                HBNBCommand.ClassExist(arg[0])
+                storage.reload()
+                dic = storage.all()
+                obj = dic[arg[0]+'.'+arg[1]]
                 try:
-                    HBNBCommand.ClassExist(arg[0])
-                    storage.reload()
-                    dic = storage.all()
-                    obj = dic[arg[0]+'.'+arg[1]]
-                    try:
-                        ex = obj[arg[2]]
-                        print("Why are you gay")
-                    except KeyError: 
-                        obj[arg[2]] = arg[3]
-                        storage.save()
-                except NameError:
-                    print("** class doesn't exist **")
-                except KeyError:
-                    print("** no instance found **")
+                    ex = obj[arg[2]]
+                    print("Why are you gay")
+                except KeyError: 
+                    obj[arg[2]] = arg[3]
+                    storage.save()
+            except NameError:
+                print("** class doesn't exist **")
+            except KeyError:
+                print("** no instance found **")
 
 if __name__ == '__main__':
     myCmd = HBNBCommand()
