@@ -57,12 +57,13 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg1):
         """show a saved instance: $show ClassName ID"""
         arg = arg1.split(" ")
+        length = len(arg)
         try:
             HBNBCommand.ClassExist(arg[0])
-            if arg[0] == '':
+            if length == 0:
                 print("** class name missing **")
                 return
-            elif arg[1] == '':
+            elif length == 1:
                 print("** instance id missing **")
                 return
 
@@ -73,20 +74,20 @@ class HBNBCommand(cmd.Cmd):
             print(obj)
         except NameError:
             print("** class doesn't exist **")
-        except (KeyError, IOError, IndexError):
+        except (KeyError, IOError):
             print("** no instance found **")
         return
 
     def do_destroy(self, args):
         """delete an object: $destroy ClassName ID"""
         arg = args.split(" ")
-        
+        length = len(arg)
         try:
             HBNBCommand.ClassExist(arg[0])
-            if arg[0] == '':
+            if length == 0:
                 print("** class name missing **")
                 return
-            if arg[1] == '':
+            elif length == 1:
                 print("** instance id missing **")
                 return
 
@@ -96,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         except NameError:
             print("** class doesn't exist **")
-        except (KeyError, IOError, IndexError):
+        except (KeyError, IOError):
             print("** no instance found **")
         return
     
