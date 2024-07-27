@@ -131,8 +131,12 @@ class HBNBCommand(cmd.Cmd):
                     storage.reload()
                     dic = storage.all()
                     obj = dic[arg[0]+'.'+arg[1]]
-                    obj[arg[2]] = arg[3]
-                    storage.save()
+                    try:
+                        ex = obj[arg[2]]
+                        print("Why are you gay")
+                    except KeyError: 
+                        obj[arg[2]] = arg[3]
+                        storage.save()
                 except NameError:
                     print("** class doesn't exist **")
                 except KeyError:
