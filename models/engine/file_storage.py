@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ should work just as a DB"""
 import json
+from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:

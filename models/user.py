@@ -3,6 +3,7 @@ from models.base_model import BaseModel
 from models import storage
 """user"""
 
+
 class User(BaseModel):
     email = ""
     password = ""
