@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import cmd
-""" cmd.Cmd object which give the cmd properties 
+""" cmd.Cmd object which give the cmd properties
     HBNBCommand will be our interface while developing the BnB clone proj"""
 
 
@@ -9,7 +9,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self) -> bool:
         """ when entering empty line """
-        return 
+        return
 
     def do_quit(self, arg):
         """ this command can quit that country"""
@@ -20,7 +20,8 @@ class HBNBCommand(cmd.Cmd):
         print()
         raise SystemExit
 
+
 if __name__ == '__main__':
     myCmd = HBNBCommand()
-    myCmd.prompt =  "(hbnb) "
+    myCmd.prompt = "(hbnb) "
     myCmd.cmdloop('')
