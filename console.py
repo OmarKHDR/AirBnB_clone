@@ -27,20 +27,20 @@ class HBNBCommand(cmd.Cmd):
     
 
     def emptyline(self) -> bool:
-        """ when entering empty line """
+        """ when entering empty line nothing will happen """
         return
 
     def do_quit(self, arg):
-        """ this command can quit that country"""
+        """ can quit the script: $quit"""
         raise SystemExit
 
     def do_EOF(self, arg):
-        """ documented quit signal"""
+        """ quit when sending quit signal: $ctrl + d == quit"""
         print()
         raise SystemExit
 
     def do_create(self, arg):
-        """creating a new object that's based on BaseModel class"""
+        """creating a new object that's based on BaseModel class : $create ClassName"""
         
         if arg == '':
             print("** class name missing **")
@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
 
 
     def do_show(self, arg1):
-        """show a saved instance"""
+        """show a saved instance: $show ClassName ID"""
         arg = arg1.split(" ")
         try:
             HBNBCommand.ClassExist(arg[0])
@@ -78,6 +78,7 @@ class HBNBCommand(cmd.Cmd):
         return
 
     def do_destroy(self, args):
+        """delete an object: $destroy ClassName ID"""
         arg = args.split(" ")
         
         try:
@@ -100,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
         return
     
     def do_all(self, args):
+        """ print all objects: $all ClassName or $all"""
         try:
             if args != '':
                 HBNBCommand.ClassExist(args)
@@ -111,9 +113,33 @@ class HBNBCommand(cmd.Cmd):
         except:
             print(" ** class doesn't exist **")
 
+    def do_update(self,args):
+        """adding attr to existing object: $update ClassName ID attr_name 'attr value'"""
+        arg = args.split(" ")
+        match len(arg):
+            case 0:
+                print("** class name missing **")
+            case 1:
+                print("** instance id missing **")
+            case 2:
+                print("** attribute name missing **")
+            case 3:
+                print("** value missing **")
+            case 4:
+                try:
+                    HBNBCommand.ClassExist(arg[0])
+                    storage.reload()
+                    dic = storage.all()
+                    obj = dic[arg[0]+'.'+arg[1]]
+                    obj[arg[2]] = arg[3]
+                    storage.save()
+                except NameError:
+                    print("** class doesn't exist **")
+                except KeyError:
+                    print("** no instance found **")
 
 if __name__ == '__main__':
     myCmd = HBNBCommand()
     myCmd.prompt = "(hbnb) "
-    myCmd.cmdloop('')
+    myCmd.cmdloop('use help or ? for commands\n========================================')
     
