@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """base class with basic functionality"""
 import uuid
-import models
+from __init__ import storage
 from datetime import datetime as dt
 timeformat = '%Y-%m-%dT%H:%M:%S.%f'
 
@@ -21,14 +21,14 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = (dt.now())
             self.updated_at = (dt.now())
-            models.storage.new(self)
+            storage.new(self)
 
     def __str__(self):
         nm = f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
         return nm
 
     def save(self):
-        models.storage.save()
+        storage.save()
         self.updated_at = (dt.now())
 
     def to_dict(self):
@@ -37,3 +37,7 @@ class BaseModel:
         dic['created_at'] = dt.isoformat(self.created_at)
         dic['__class__'] = type(self).__name__
         return dic
+
+c = BaseModel()
+c.save()
+print(c)
