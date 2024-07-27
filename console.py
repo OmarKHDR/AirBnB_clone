@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
                 if args in key :
                     print(BaseModel(**val))
         except:
-            print(" ** class doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_update(self,args):
         """adding attr to existing object: $update ClassName ID attr_name 'attr value'"""
