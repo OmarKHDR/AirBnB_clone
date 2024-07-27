@@ -3,6 +3,7 @@ import cmd
 """ cmd.Cmd object which give the cmd properties 
     HBNBCommand will be our interface while developing the BnB clone proj"""
 
+
 class HBNBCommand(cmd.Cmd):
     """ ######### cmd prompet #########"""
 
